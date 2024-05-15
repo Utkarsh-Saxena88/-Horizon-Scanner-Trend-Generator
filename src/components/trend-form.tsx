@@ -83,6 +83,9 @@ const TrendForm = () => {
   return (
     <Form {...form}>
       <div className="p-6 rounded-md space-y-4 bg-[#F4F6FC] w-[80%] ">
+        <h1 className="text-2xl text-[#28293D] antialiased font-bold">
+          Horizon Scanner -Trend Generator
+        </h1>
         <h1 className="text-sm font-medium">
           To generate a Trend, provide us with some basic details:
         </h1>
