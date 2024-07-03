@@ -23,6 +23,9 @@ import { useForm } from "react-hook-form";
 import { BASE_URL, trends } from "@/lib/constants";
 import axios from "axios";
 import { useToast } from "./ui/use-toast";
+import { useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 const formSchema = z.object({
   geography: z.string(),
   dept: z.string(),
@@ -34,6 +37,7 @@ const formSchema = z.object({
 });
 
 const TrendForm = () => {
+  const router = useRouter();
   const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -66,11 +70,11 @@ const TrendForm = () => {
       form.resetField("Trends", { defaultValue: "" });
       toast({
         title:
-          "We'll email you shortly. Click the link in the email to download the trend",
+          "We will email you shortly. Once the processing is completed, you can either click the link in the email or download it directly from the listing to retrieve the trend.",
         variant: "success",
       });
       form.reset();
-      form.setValue("Trends", apiData.Trends);
+      router.push("/");
     } catch (error) {
       console.log(error);
       toast({
@@ -83,9 +87,13 @@ const TrendForm = () => {
   return (
     <Form {...form}>
       <div className="p-6 rounded-md space-y-4 bg-[#F4F6FC] w-[80%] ">
-        <h1 className="text-2xl text-[#28293D] antialiased font-bold">
-          Horizon Scanner -Trend Generator
-        </h1>
+        <div className="text-2xl text-[#28293D] flex items-center  antialiased font-bold">
+          <Link href={"/"}>
+            {" "}
+            <ArrowLeft className="w-4 h-4 mr-2 cursor-pointer" />
+          </Link>
+          <span>Horizon Scanner -Trend Generator</span>
+        </div>
         <h1 className="text-sm font-medium">
           To generate a Trend, provide us with some basic details:
         </h1>

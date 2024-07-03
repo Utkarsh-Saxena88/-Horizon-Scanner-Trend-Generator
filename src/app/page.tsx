@@ -1,10 +1,13 @@
+import Header from "@/components/header";
+import ListingTable from "@/components/lisiting-table";
 import TrendForm from "@/components/trend-form";
 import React from "react";
 
 const page = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center p-3">
-      <TrendForm />
+    <div className="p-2 space-y-3">
+      <Header />
+      <ListingTable />
     </div>
   );
 };
