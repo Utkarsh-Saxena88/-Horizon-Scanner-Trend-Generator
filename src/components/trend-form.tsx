@@ -28,7 +28,7 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Card } from "./ui/card";
 const formSchema = z.object({
-  geography: z.string(),
+  geography: z.string({}),
   dept: z.string(),
   Trends: z.string(),
   additional_details: z.string().optional(),
@@ -36,7 +36,6 @@ const formSchema = z.object({
   email: z.string().email(),
   filename: z.string().optional(),
 });
-// h
 const TrendForm = () => {
   const router = useRouter();
   const { toast } = useToast();
